@@ -11,27 +11,21 @@ int isPrime(unsigned long long int v){
 			return 0;
 		}
 	}
-
 	for(i = 3; i <= sqrt(v); i += 2){
-		if(v%1 == 0){
+		if(v%i == 0){
 			return 0;
 		}
 	}
 	return 1;
 }
 
-// int primeList(){
-// 	int i;
-// 	while
-// }
-
 int main(){
 	unsigned long long int i = 3;
 	printf("2\n");
 	while(1){
-		//if(isPrime(i)){
+		if(isPrime(i)){
 			printf("%lld\n", i);
-		//}
+		}
 		i+=2;
 	}
 	return 0;
