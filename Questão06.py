@@ -4,7 +4,6 @@ restos = {}
 n1 = int(input('Digita o primeiro:  '))
 n2 = int(input('Digita o segundo:  '))
 
-#questao5 - euclides
 def mdc(a, b):
 	if(a%b == 0):
 		return b
@@ -27,6 +26,7 @@ def coefLin(r):
 
 
 resto = mdc(n1, n2)
-#print(restos)
+if(n1%n2==0):
+	resto = 0
 exit = coefLin(resto)
 print(str(resto) + " = " + str(exit[0]) + " * " + str(exit[1]) + " + " + str(exit[2]) + " * " + str(exit[3]))
