@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 restos = {}
-print("A entrada segue a forma: ax = b (mod m)")
+print("A entrada segue a forma: ax ≡ b (mod m)")
 n1 = int(input('Digite o a:  '))
 n2 = int(input('Digite o b:  '))
 n3 = int(input('Digite o m:  '))
