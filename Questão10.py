@@ -3,15 +3,11 @@
 #b, m , dicionario com os restos
 eqs = []
 
-n = int(input("Insira o numero de equações: "))
-print("As entradas seguem a forma: x ≡ b (mod m)")
-for i in range(n):
-	print("Equação " + str(i+1) + ": ")
-	eqs.append([])
-	eqs[i].append(int(input('Digite o b:  ')))
-	eqs[i].append(int(input('Digite o m:  ')))
-	eqs[i].append({})
-
+def coprimos(x):
+	for i in range(len(eqs)-1):
+		if(eqs[i][1]%x==0 or x%eqs[i][1]==0):
+			return 0
+	return 1
 
 def mdc(a, b, restos):
 	if(a%b == 0):
@@ -58,13 +54,28 @@ def teoRestoChines(n):
 		d = mdc(Mk[i],eqs[i][1],eqs[i][2])
 		s.append(inverso(d, eqs[i][2], Mk[i], 1, eqs[i][1]))
 
-	print(Mk[i], s[i], eqs[i][0])
-
 	for i in range(n):
 		x0 = x0 + Mk[i]*s[i]*eqs[i][0]
 
 	return x0%M
 
 
+n = int(input("Insira o numero de equações: "))
+aux = 1
+print("As entradas seguem a forma: x ≡ b (mod m)")
+for i in range(n):
+	print("Equação " + str(i+1) + ": ")
+	eqs.append([])
+	eqs[i].append(int(input('Digite o b:  ')))
+	eqs[i].append(int(input('Digite o m:  ')))
+	eqs[i].append({})
+	if(not coprimos(eqs[i][1])):
+		print("Valores de m não sao coprimos, parando operação")
+		aux = 0
+		break
 
-print("Resposta -> " + str(teoRestoChines(n)))
+if(aux):
+	if(n<=1):
+		print("Um sistema precisa de mais equações")
+	else:
+		print("Resposta -> " + str(teoRestoChines(n)))
