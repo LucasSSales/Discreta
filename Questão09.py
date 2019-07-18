@@ -2,6 +2,12 @@
 
 #b, m , dicionario com os restos
 eqs = []
+aux = 1
+def coprimos(x):
+	for i in range(len(eqs)-1):
+		if(eqs[i][1]%x==0 or x%eqs[i][1]==0):
+			return 0
+	return 1
 
 print("As entradas seguem a forma: x ≡ b (mod m)")
 for i in range(3):
@@ -10,6 +16,12 @@ for i in range(3):
 	eqs[i].append(int(input('Digite o b:  ')))
 	eqs[i].append(int(input('Digite o m:  ')))
 	eqs[i].append({})
+	if(not coprimos(eqs[i][1])):
+		print("Valores de m não sao coprimos, parando operação")
+		aux = 0
+		break
+
+
 
 def mdc(a, b, restos):
 	if(a%b == 0):
@@ -65,4 +77,5 @@ def teoRestoChines():
 
 
 
-print("Resposta -> " + str(teoRestoChines()))
+if(aux):
+	print("Resposta -> " + str(teoRestoChines()))
